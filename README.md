@@ -21,21 +21,22 @@ The dataset used in this project is highly imbalanced, reflecting real-world fin
 ---
 
 ## Repository Structure
-'''
+
+```text
 fraud-detection-streamlit-ml/
 │
-├─ app/
-│ └─ fraud_app.py # Streamlit application
+├── app/
+│   └── fraud_app.py  # Streamlit application
 │
-├─ notebooks/
-│ └─ Fraud_Detection.ipynb # EDA and model training notebook
+├── notebooks/
+│   └── Fraud_Detection.ipynb  # EDA and model training notebook
 │
-├─ models/
-│ └─ fraud_detection_model.pkl # Trained machine learning model
+├── models/
+│   └── fraud_detection_model.pkl  # Trained machine learning model
 │
-├─ requirements.txt # Python dependencies
-└─ README.md # Documentation
-'''
+├── requirements.txt  # Python dependencies
+└── README.md  # Documentation
+```
 
 ---
 
