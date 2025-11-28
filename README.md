@@ -21,7 +21,7 @@ The dataset used in this project is highly imbalanced, reflecting real-world fin
 ---
 
 ## Repository Structure
-
+'''
 fraud-detection-streamlit-ml/
 │
 ├─ app/
@@ -35,7 +35,7 @@ fraud-detection-streamlit-ml/
 │
 ├─ requirements.txt # Python dependencies
 └─ README.md # Documentation
-
+'''
 
 ---
 
