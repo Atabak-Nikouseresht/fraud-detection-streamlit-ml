@@ -140,10 +140,3 @@ Data Analytics · Machine Learning · Financial Risk
 
 GitHub: [Atabak-Nikouseresht](https://github.com/Atabak-Nikouseresht)  
 LinkedIn: [Atabak Nikouseresht](https://linkedin.com/in/atabak-nikouseresht)
-
----
-
-## Contact
-
-GitHub: https://github.com/Atabak-Nikouseresht  
-Email: atabak.nikouseresht@gmail.com
