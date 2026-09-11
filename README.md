@@ -132,6 +132,15 @@ Potential enhancements:
 
 This project is released under the MIT License.
 
+## Author
+
+**Atabak Nikouseresht**  
+MSc Applied Economics and Markets — University of Bologna  
+Data Analytics · Machine Learning · Financial Risk
+
+GitHub: [Atabak-Nikouseresht](https://github.com/Atabak-Nikouseresht)  
+LinkedIn: [Atabak Nikouseresht](https://linkedin.com/in/atabak-nikouseresht)
+
 ---
 
 ## Contact
