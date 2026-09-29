@@ -1,5 +1,6 @@
 pandas==2.2.2
 numpy==1.26.4
+# The committed model artifact requires this version; rebuild and verify before upgrading.
 scikit-learn==1.6.1
 joblib==1.4.2
 streamlit==1.54.0

@@ -6,6 +6,11 @@ updates:
       interval: weekly
       day: monday
     open-pull-requests-limit: 1
+    ignore:
+      - dependency-name: scikit-learn
+        update-types:
+          - version-update:semver-minor
+          - version-update:semver-patch
     groups:
       python-dependencies:
         patterns:
