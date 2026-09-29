@@ -1,0 +1,5 @@
+-r requirements.txt
+ipykernel==7.3.0
+matplotlib==3.11.2
+notebook==7.6.3
+seaborn==0.13.2

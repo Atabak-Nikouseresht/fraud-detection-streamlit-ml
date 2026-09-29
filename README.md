@@ -1,13 +1,14 @@
 # Fraud Detection Demo — scikit-learn and Streamlit
 
-A small, local fraud-classification demonstration that connects a saved scikit-learn model pipeline to a Streamlit form. It illustrates the path from transaction features to a model prediction; it is not a deployed fraud service or a validated operational risk control.
+A local fraud-classification demonstration that connects a saved scikit-learn pipeline to a Streamlit form. It shows a model-to-interface workflow for transaction predictions.
 
 ## What is included
 
-- `app/fraud_app.py` — loads the committed model artifact and collects one transaction's features for a prediction.
+- `app/fraud_app.py` — Streamlit interface for one-transaction predictions.
 - `models/fraud_detection_model.pkl` — serialized model used by the app.
 - `notebooks/Fraud_Detection.ipynb` — exploratory analysis and model-training workflow.
-- `requirements.txt` — pinned package versions.
+- `requirements.txt` — pinned application runtime dependencies.
+- `requirements-notebook.txt` — runtime dependencies plus notebook and visualization tools.
 
 The notebook's saved output describes 6,362,620 observations and 8,213 fraud cases (about 0.13%). These are the notebook's recorded dataset counts; the source CSV is not included.
 
@@ -16,8 +17,6 @@ The notebook's saved output describes 6,362,620 observations and 8,213 fraud cas
 From the repository root:
 
 ```bash
-git clone https://github.com/Atabak-Nikouseresht/fraud-detection-streamlit-ml.git
-cd fraud-detection-streamlit-ml
 python -m venv .venv
 # Windows: .venv\\Scripts\\activate
 # macOS/Linux: source .venv/bin/activate
@@ -26,15 +25,23 @@ pip install -r requirements.txt
 streamlit run app/fraud_app.py
 ```
 
-The app loads `models/fraud_detection_model.pkl` relative to its own file, so launch it from the repository root or another working directory. Enter the transaction fields and select **Predict** to see the model's class label.
+The app loads the model relative to its own file. Enter the transaction fields and select **Predict** to see the model's class label.
 
-## Reproduce the notebook
+## Run the notebook
 
-The notebook expects the Kaggle CSV at `data/AIML Dataset.csv` relative to the notebook's working directory (`notebooks/`). The dataset is not included; obtain it from the [dataset source](https://www.kaggle.com/datasets/amanalisiddiqui/fraud-detection-dataset) and follow its terms. The notebook also imports Jupyter and Seaborn, which are not currently listed as direct requirements; install those in the environment before running the notebook.
+The CSV is not included. Obtain it from the [dataset source](https://www.kaggle.com/datasets/amanalisiddiqui/fraud-detection-dataset), follow its terms, and save it as `data/AIML Dataset.csv` in the repository root.
+
+From the repository root, install the notebook environment, then start Jupyter from the `notebooks/` directory so the notebook's current `../data/AIML Dataset.csv` path resolves to the repository's `data/` folder:
+
+```bash
+pip install -r requirements-notebook.txt
+cd notebooks
+jupyter notebook Fraud_Detection.ipynb
+```
 
 ## Method and limits
 
-The notebook uses a preprocessing pipeline with scaling and one-hot encoding and a class-weighted logistic-regression classifier. The repository contains no test suite or CI, and the committed documentation does not establish a validated operating threshold, calibrated probability, or real-world fraud-detection performance. Treat the interface output as a demonstration, not a decision recommendation.
+The notebook uses scaling, one-hot encoding, and a class-weighted logistic-regression classifier. The repository does not establish a validated operating threshold, calibrated probability, or real-world fraud-detection performance; treat the interface as a demonstration, not a decision recommendation.
 
 ## License and author
 
