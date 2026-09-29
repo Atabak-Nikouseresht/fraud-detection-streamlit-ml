@@ -31,12 +31,21 @@ The app loads the model relative to its own file. Enter the transaction fields a
 
 The CSV is not included. Obtain it from the [dataset source](https://www.kaggle.com/datasets/amanalisiddiqui/fraud-detection-dataset), follow its terms, and save it as `data/AIML Dataset.csv` in the repository root.
 
-From the repository root, install the notebook environment, then start Jupyter from the `notebooks/` directory so the notebook's current `../data/AIML Dataset.csv` path resolves to the repository's `data/` folder:
+From the repository root, install the notebook environment and open the notebook. Its path helper locates the repository root whether Jupyter starts here or in `notebooks/`:
 
 ```bash
 pip install -r requirements-notebook.txt
-cd notebooks
-jupyter notebook Fraud_Detection.ipynb
+jupyter notebook notebooks/Fraud_Detection.ipynb
+```
+
+The notebook reports a clear error if the separately obtained CSV is missing. The dataset is intentionally not committed.
+
+## Checks
+
+Run the lightweight tests without the Kaggle dataset:
+
+```bash
+python -m unittest discover -s tests -v
 ```
 
 ## Method and limits
