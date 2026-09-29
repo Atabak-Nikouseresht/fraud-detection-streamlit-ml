@@ -1,5 +1,7 @@
 # Fraud Detection Demo — scikit-learn and Streamlit
 
+[![CI](https://github.com/Atabak-Nikouseresht/fraud-detection-streamlit-ml/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Atabak-Nikouseresht/fraud-detection-streamlit-ml/actions/workflows/ci.yml)
+
 A local fraud-classification demonstration that connects a saved scikit-learn pipeline to a Streamlit form. It shows a model-to-interface workflow for transaction predictions.
 
 ## What is included
@@ -42,7 +44,7 @@ The notebook reports a clear error if the separately obtained CSV is missing. Th
 
 ## Checks
 
-Run the lightweight tests without the Kaggle dataset:
+Run the lightweight tests without the Kaggle dataset; GitHub Actions runs this suite on pushes and pull requests:
 
 ```bash
 python -m unittest discover -s tests -v
