@@ -1,142 +1,43 @@
-# Fraud Detection System with Machine Learning and Streamlit
+# Fraud Detection Demo — scikit-learn and Streamlit
 
-This repository presents an end-to-end fraud detection system built using Python, Scikit-Learn, and Streamlit. The project demonstrates the complete workflow typically used in FinTech and risk analytics: data preprocessing, modeling, handling extreme class imbalance, exporting a trained model, and deploying an interactive application for real-time predictions.
+A small, local fraud-classification demonstration that connects a saved scikit-learn model pipeline to a Streamlit form. It illustrates the path from transaction features to a model prediction; it is not a deployed fraud service or a validated operational risk control.
 
-The objective is to provide a clean, production-oriented example of how machine learning pipelines are implemented for fraud detection tasks.
+## What is included
 
----
+- `app/fraud_app.py` — loads the committed model artifact and collects one transaction's features for a prediction.
+- `models/fraud_detection_model.pkl` — serialized model used by the app.
+- `notebooks/Fraud_Detection.ipynb` — exploratory analysis and model-training workflow.
+- `requirements.txt` — pinned package versions.
 
-## Project Overview
+The notebook's saved output describes 6,362,620 observations and 8,213 fraud cases (about 0.13%). These are the notebook's recorded dataset counts; the source CSV is not included.
 
-This project includes:
+## Run the app
 
-- A reproducible machine learning pipeline for fraud classification  
-- A trained model exported in `.pkl` format  
-- A Streamlit application for real-time fraud prediction  
-- A Jupyter Notebook with exploratory data analysis and model training  
-- A structured, professional repository layout suitable for portfolio and deployment  
+From the repository root:
 
-The dataset used in this project is highly imbalanced, reflecting real-world financial fraud patterns.
-
----
-
-## Repository Structure
-
-```text
-fraud-detection-streamlit-ml/
-│
-├── app/
-│   └── fraud_app.py  # Streamlit application
-│
-├── notebooks/
-│   └── Fraud_Detection.ipynb  # EDA and model training notebook
-│
-├── models/
-│   └── fraud_detection_model.pkl  # Trained machine learning model
-│
-├── requirements.txt  # Python dependencies
-└── README.md  # Documentation
+```bash
+git clone https://github.com/Atabak-Nikouseresht/fraud-detection-streamlit-ml.git
+cd fraud-detection-streamlit-ml
+python -m venv .venv
+# Windows: .venv\\Scripts\\activate
+# macOS/Linux: source .venv/bin/activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+streamlit run app/fraud_app.py
 ```
 
----
+The app loads `models/fraud_detection_model.pkl` relative to its own file, so launch it from the repository root or another working directory. Enter the transaction fields and select **Predict** to see the model's class label.
 
-## Dataset
+## Reproduce the notebook
 
-The dataset is not included in this repository due to its large size.  
-Download it from Kaggle:
+The notebook expects the Kaggle CSV at `data/AIML Dataset.csv` relative to the notebook's working directory (`notebooks/`). The dataset is not included; obtain it from the [dataset source](https://www.kaggle.com/datasets/amanalisiddiqui/fraud-detection-dataset) and follow its terms. The notebook also imports Jupyter and Seaborn, which are not currently listed as direct requirements; install those in the environment before running the notebook.
 
-https://www.kaggle.com/datasets/amanalisiddiqui/fraud-detection-dataset
+## Method and limits
 
-To run the notebook, download the dataset and place it in a local directory.  
-Update the file path inside the notebook accordingly.
+The notebook uses a preprocessing pipeline with scaling and one-hot encoding and a class-weighted logistic-regression classifier. The repository contains no test suite or CI, and the committed documentation does not establish a validated operating threshold, calibrated probability, or real-world fraud-detection performance. Treat the interface output as a demonstration, not a decision recommendation.
 
----
+## License and author
 
-## Machine Learning Pipeline
+MIT License.
 
-The model was developed using:
-
-- Logistic Regression classifier  
-- ColumnTransformer for preprocessing  
-  - StandardScaler for numerical features  
-  - OneHotEncoder for categorical features  
-- Handling extreme class imbalance with `class_weight="balanced"`  
-- A complete Scikit-Learn Pipeline  
-- Model export using `joblib`  
-
-The notebook includes exploratory data analysis, class distribution inspection, feature preparation, model training, and evaluation.
-
----
-
-## Running the Streamlit Application
-
-### 1. Clone the repository
-
-git clone https://github.com/Atabak-Nikouseresht/fraud-detection-streamlit-ml.git
-
-cd fraud-detection-streamlit-ml
-
-
-### 2. Install dependencies
-
-pip install -r requirements.txt
-
-
-### 3. Launch the Streamlit application
-
-cd app
-streamlit run fraud_app.py
-
-
----
-
-## Running the Jupyter Notebook
-
-1. Download the dataset from Kaggle.  
-2. Place the CSV file in a local directory.  
-3. Open the notebook:
-
-jupyter notebook notebooks/Fraud_Detection.ipynb
-
-
-4. Update the dataset path inside the notebook if necessary.
-
----
-
-## Technologies Used
-
-- Python 3  
-- Scikit-Learn  
-- Pandas  
-- NumPy  
-- Streamlit  
-- Joblib  
-- Jupyter Notebook  
-
----
-
-## Future Improvements
-
-Potential enhancements:
-
-- Advanced feature engineering  
-- Testing models such as Random Forest, XGBoost, and LightGBM  
-- Hyperparameter tuning  
-- Threshold optimization using precision–recall curves  
-- SHAP-based model explainability  
-- Containerization and cloud deployment  
-
----
-
-## License
-
-This project is released under the MIT License.
-
-## Author
-
-**Atabak Nikouseresht**  
-MSc Applied Economics and Markets — University of Bologna  
-Data Analytics · Machine Learning · Financial Risk
-
-GitHub: [Atabak-Nikouseresht](https://github.com/Atabak-Nikouseresht)  
-LinkedIn: [Atabak Nikouseresht](https://linkedin.com/in/atabak-nikouseresht)
+Atabak Nikouseresht — MSc Applied Economics and Markets, University of Bologna · [GitHub](https://github.com/Atabak-Nikouseresht) · [LinkedIn](https://linkedin.com/in/atabak-nikouseresht)
