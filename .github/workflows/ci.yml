@@ -17,9 +17,17 @@ jobs:
         uses: actions/setup-python@v7
         with:
           python-version: "3.11.16"
-      - name: Install application dependencies
-        run: python -m pip install -r requirements.txt
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+      - name: Install locked application dependencies
+        run: uv sync --locked --no-dev
+      - name: Check installed dependencies
+        run: uv pip check
+      - name: Verify Python, package, and model artifact versions
+        run: uv run python scripts/check_environment.py
+      - name: Exercise synthetic training workflow
+        run: uv run python scripts/synthetic_training_smoke.py
       - name: Compile application and tests
-        run: python -m compileall -q app tests
+        run: uv run python -m compileall -q app tests scripts
       - name: Run tests
-        run: python -m unittest discover -s tests -v
+        run: uv run python -m unittest discover -s tests -v

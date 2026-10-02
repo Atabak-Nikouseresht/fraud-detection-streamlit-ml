@@ -1,0 +1,16 @@
+{
+  "artifact": "models/fraud_detection_model.pkl",
+  "sha256": "2686468a5bf063d461f21ee617d52b1707e7f06ecac1e62290f6d7a8447b7a4e",
+  "git_blob": "ffd5da81a8a30157daca002c53b0a55429544004",
+  "feature_schema": [
+    "type",
+    "amount",
+    "oldbalanceOrg",
+    "newbalanceOrig",
+    "oldbalanceDest",
+    "newbalanceDest",
+    "balanceDiffOrig",
+    "balanceDiffDest"
+  ],
+  "training_provenance": "Legacy artifact predating the corrected notebook methodology. The source CSV and verified training environment are unavailable, so training date, data identity, package versions, and performance metrics are unknown. This metadata records file integrity and schema compatibility only; it does not establish artifact provenance or model performance."
+}
