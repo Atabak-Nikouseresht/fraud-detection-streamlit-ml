@@ -19,6 +19,10 @@ htmlcov/
 # User-supplied dataset (not redistributed)
 /data/AIML Dataset.csv
 
+# Local unvalidated exports; promotion requires explicit provenance review
+/models/fraud_detection_model.candidate.pkl
+/models/fraud_detection_model.candidate.json
+
 # OS metadata
 .DS_Store
 Thumbs.db
