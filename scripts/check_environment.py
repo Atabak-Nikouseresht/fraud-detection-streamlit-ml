@@ -20,13 +20,28 @@ EXPECTED_VERSIONS = {
 
 def verify_artifact() -> None:
     metadata = json.loads(METADATA.read_text(encoding="utf-8"))
-    digest = hashlib.sha256(ARTIFACT.read_bytes()).hexdigest()
+    contents = ARTIFACT.read_bytes()
+    digest = hashlib.sha256(contents).hexdigest()
     if digest != metadata["sha256"]:
         raise SystemExit(
             f"Artifact SHA-256 mismatch: expected {metadata['sha256']}, got {digest}"
         )
     if metadata["artifact"] != ARTIFACT.relative_to(ROOT).as_posix():
         raise SystemExit("Artifact path does not match artifact metadata")
+    blob = hashlib.sha1(b"blob " + str(len(contents)).encode() + b"\0" + contents).hexdigest()
+    if metadata["git_blob"] != blob:
+        raise SystemExit("Artifact Git blob does not match artifact metadata")
+    # Deserialize only after confirming the trusted committed artifact checksum.
+    import joblib
+    if str(ROOT) not in sys.path:
+        sys.path.insert(0, str(ROOT))
+    from scripts.export_metadata import active_predictors
+
+    pipeline = joblib.load(ARTIFACT)
+    if list(pipeline.feature_names_in_) != metadata["feature_schema"]:
+        raise SystemExit("Artifact accepted feature schema does not match metadata")
+    if active_predictors(pipeline) != metadata["active_predictors"]:
+        raise SystemExit("Artifact active predictor selectors do not match metadata")
 
 
 def main() -> int:

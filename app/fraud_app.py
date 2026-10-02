@@ -43,7 +43,7 @@ def load_model():
 
 
 def build_transaction_features(transaction):
-    """Build the exact eight-column feature row used to train the saved model."""
+    """Build the eight-column input row accepted by the saved model."""
     if set(transaction) != set(INPUT_COLUMNS):
         missing = sorted(set(INPUT_COLUMNS) - set(transaction))
         extra = sorted(set(transaction) - set(INPUT_COLUMNS))

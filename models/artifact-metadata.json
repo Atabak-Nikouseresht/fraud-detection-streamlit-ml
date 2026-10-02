@@ -12,5 +12,18 @@
     "balanceDiffOrig",
     "balanceDiffDest"
   ],
-  "training_provenance": "Legacy artifact predating the corrected notebook methodology. The source CSV and verified training environment are unavailable, so training date, data identity, package versions, and performance metrics are unknown. This metadata records file integrity and schema compatibility only; it does not establish artifact provenance or model performance."
+  "training_provenance": "Legacy artifact predating the corrected notebook methodology. The source CSV and verified training environment are unavailable, so training date, data identity, package versions, and performance metrics are unknown. This metadata records file integrity and schema compatibility only; it does not establish artifact provenance or model performance.",
+  "status": "legacy-unretrained",
+  "active_predictors": [
+    "amount",
+    "oldbalanceOrg",
+    "newbalanceOrig",
+    "oldbalanceDest",
+    "newbalanceDest",
+    "type"
+  ],
+  "dropped_inputs": [
+    "balanceDiffOrig",
+    "balanceDiffDest"
+  ]
 }
