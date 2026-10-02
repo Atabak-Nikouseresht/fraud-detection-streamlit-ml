@@ -1,0 +1,24 @@
+[project]
+name = "fraud-detection-streamlit-ml"
+version = "0.1.0"
+description = "Reproducible Streamlit fraud-classification demonstration"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "pandas==2.2.2",
+    "numpy==1.26.4",
+    "scikit-learn==1.6.1",
+    "joblib==1.4.2",
+    "streamlit==1.54.0",
+    "Pillow==12.3.0",
+]
+
+[project.optional-dependencies]
+notebook = [
+    "ipykernel==7.3.0",
+    "matplotlib==3.11.2",
+    "notebook==7.6.3",
+    "seaborn==0.13.2",
+]
+
+[tool.uv]
+package = false
