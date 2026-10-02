@@ -12,7 +12,7 @@ A local fraud-classification demonstration that connects a saved scikit-learn pi
 - `requirements.txt` — pinned application runtime dependencies.
 - `requirements-notebook.txt` — runtime dependencies plus notebook and visualization tools.
 
-The notebook's saved output describes 6,362,620 observations and 8,213 fraud cases (about 0.13%). These are the notebook's recorded dataset counts; the source CSV is not included.
+The notebook's saved output describes 6,362,620 observations and 8,213 fraud cases (about 0.13%). These are previously recorded notebook counts, not recomputed in this checkout; the source CSV is not included.
 
 ## Run the app
 
@@ -52,7 +52,7 @@ python -m unittest discover -s tests -v
 
 ## Method and limits
 
-The notebook uses scaling, one-hot encoding, and a class-weighted logistic-regression classifier. The repository does not establish a validated operating threshold, calibrated probability, or real-world fraud-detection performance; treat the interface as a demonstration, not a decision recommendation.
+The notebook uses scaling, one-hot encoding, and a class-weighted logistic-regression classifier with deterministic split/model seeds. Training and the app share the transaction type, amount, raw balance, and two derived balance-difference features. Negative differences are arithmetic observations, not automatic evidence of invalid data or fraud. Evaluation reports ROC-AUC, average precision (a precision-recall ranking summary), fraud-class precision/recall/F1, and a confusion matrix at the default 0.5 threshold; accuracy alone is not meaningful for this extreme class imbalance. The committed `models/fraud_detection_model.pkl` predates the corrected notebook methodology and was intentionally left unchanged; the notebook has not been retrained because the full source dataset is unavailable. The repository does not establish a validated operating threshold, calibrated probability, or real-world fraud-detection performance; treat the interface as a demonstration, not a decision recommendation.
 
 ## License and author
 

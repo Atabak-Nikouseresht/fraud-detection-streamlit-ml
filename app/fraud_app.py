@@ -1,12 +1,16 @@
 from pathlib import Path
+import sys
 
 import joblib
 import pandas as pd
 import streamlit as st
 
+REPOSITORY_DIRECTORY = Path(__file__).resolve().parents[1]
+if str(REPOSITORY_DIRECTORY) not in sys.path:
+    sys.path.insert(0, str(REPOSITORY_DIRECTORY))
+from repository_paths import resolve_model_path
 
-REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
-MODEL_PATH = REPOSITORY_ROOT / "models" / "fraud_detection_model.pkl"
+MODEL_PATH = resolve_model_path(Path(__file__))
 INPUT_COLUMNS = (
     "type",
     "amount",
